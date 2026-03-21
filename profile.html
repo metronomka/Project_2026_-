@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — МЕТРОНОМ</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="main.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#EAB308',
+                        border: '#E5E7EB',
+                        secondary: '#F3F4F6',
+                        'muted-foreground': '#6B7280'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-link.active { border-color: #EAB308; color: #000; font-weight: 600; }
+        .grayscale { filter: grayscale(100%); }
+        .grayscale:hover { filter: grayscale(0%); }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+    <div class="min-h-screen py-24 px-4 lg:px-8">
+        <div class="container mx-auto max-w-6xl">
+            
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 pb-12 border-b border-border">
+                <div class="flex items-center space-x-6 mb-6 md:mb-0">
+                    <div class="w-24 h-24 bg-secondary flex items-center justify-center border border-border">
+                        <i data-lucide="user" class="w-12 h-12 text-muted-foreground"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold">Александра Иванова</h1>
+                        <p class="text-muted-foreground">alexandra@example.com</p>
+                        <div class="mt-2 flex space-x-4">
+                            <button class="text-sm text-accent hover:underline flex items-center">
+                                <i data-lucide="edit-2" class="w-3 h-3 mr-1"></i> Редактировать
+                            </button>
+                            <a href="login.html" class="text-sm text-red-500 hover:underline flex items-center">
+                                <i data-lucide="log-out" class="w-3 h-3 mr-1"></i> Выйти
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex space-x-8 mb-8 border-b border-border">
+                <button onclick="switchTab('bookings')" id="tab-link-bookings" class="tab-link active pb-4 border-b-2 border-transparent transition-all">
+                    Мои бронирования
+                </button>
+                <button onclick="switchTab('photos')" id="tab-link-photos" class="tab-link pb-4 border-b-2 border-transparent transition-all">
+                    Мои фотографии
+                </button>
+            </div>
+
+            <div id="tab-bookings" class="tab-content active">
+                <div class="space-y-6">
+                    <div class="border border-border p-6 flex flex-col md:flex-row justify-between items-start md:items-center group hover:border-accent transition-colors">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-accent/10 flex items-center justify-center text-accent">
+                                <i data-lucide="calendar"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-3 mb-1">
+                                    <h3 class="text-xl font-semibold">Портретная съемка</h3>
+                                    <span class="px-2 py-1 bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider">Предстоит</span>
+                                </div>
+                                <p class="text-sm text-muted-foreground">Фотограф: Анна Петрова</p>
+                                <p class="text-sm font-medium mt-2">15 марта 2026 • 14:00</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 md:mt-0 text-right">
+                            <div class="text-xl font-bold mb-2">8 000 ₽</div>
+                            <button class="text-sm border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors">Отменить</button>
+                        </div>
+                    </div>
+
+                    <div class="border border-border p-6 flex flex-col md:flex-row justify-between items-start md:items-center opacity-70">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-secondary flex items-center justify-center">
+                                <i data-lucide="calendar"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-3 mb-1">
+                                    <h3 class="text-xl font-semibold">Семейная фотосессия</h3>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-[10px] font-bold uppercase tracking-wider">Завершено</span>
+                                </div>
+                                <p class="text-sm text-muted-foreground">Фотограф: Елена Волкова</p>
+                                <p class="text-sm font-medium mt-2">25 февраля 2026 • 11:00</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 md:mt-0 text-right">
+                            <div class="text-xl font-bold mb-2">10 500 ₽</div>
+                            <button class="text-sm text-accent font-semibold hover:underline">Оставить отзыв</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-photos" class="tab-content">
+                <div class="grid grid-cols-1 gap-12">
+                    <div class="border border-border p-8">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1">Портретная съемка - 25 фев 2026</h3>
+                                <p class="text-muted-foreground">25 фотографий в высоком качестве</p>
+                            </div>
+                            <button class="mt-4 md:mt-0 bg-accent text-white px-8 py-3 flex items-center space-x-2 hover:bg-accent/90 transition-colors">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                <span>Скачать всё (.zip)</span>
+                            </button>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <div class="aspect-square bg-gray-200 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1706824258534-c3740a1ae96b?w=400" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer">
+                            </div>
+                            <div class="aspect-square bg-gray-200 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer">
+                            </div>
+                            <div class="aspect-square bg-gray-200 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer">
+                            </div>
+                            <div class="aspect-square bg-gray-200 overflow-hidden flex items-center justify-center border-2 border-dashed border-border text-muted-foreground">
+                                +22 фото
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+
+        function switchTab(tabName) {
+            // Скрыть весь контент
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Убрать активный класс с ссылок
+            document.querySelectorAll('.tab-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Показать нужную вкладку
+            document.getElementById('tab-' + tabName).classList.add('active');
+            document.getElementById('tab-link-' + tabName).classList.add('active');
+        }
+    </script>
+</body>
+</html>

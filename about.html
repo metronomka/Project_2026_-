@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О фотостудии — МЕТРОНОМ</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="main.js" defer></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=1cc0794e-5d09-4ff5-9bff-d7a48461475b&lang=ru_RU" type="text/javascript"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        accent: '#EAB308',
+                        secondary: '#F3F4F6',
+                        'muted-foreground': '#6B7280',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .grayscale { filter: grayscale(100%); }
+        .group:hover .grayscale-0 { filter: grayscale(0%); }
+        
+        /* Линия таймлайна для мобильных и десктопа */
+        .timeline-line {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #EAB308;
+        }
+        @media (min-width: 768px) {
+            .timeline-line {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans overflow-x-hidden">
+
+    <section class="py-24 px-4 lg:px-8">
+        <div class="container mx-auto">
+            <div class="flex items-center mb-6" data-aos="fade-right">
+                <div class="w-1 h-16 bg-accent mr-6"></div>
+                <h1 class="text-4xl md:text-5xl font-bold">О фотостудии</h1>
+            </div>
+            <p class="text-lg text-muted-foreground max-w-3xl leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                Метроном — это профессиональная фотостудия, где каждый кадр создается с безупречной точностью. 
+                Мы верим, что фотография — это искусство, требующее не только таланта, но и правильного ритма, 
+                времени и внимания к деталям.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 lg:px-8 bg-secondary">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">Наша миссия</h2>
+            <p class="text-lg text-center text-muted-foreground leading-relaxed mb-12" data-aos="fade-up" data-aos-delay="100">
+                Создавать пространство, где профессионализм встречается с творчеством, 
+                а технологии служат искусству. Мы помогаем каждому клиенту найти свой уникальный образ 
+                и запечатлеть его в идеальном кадре.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 border-2 border-accent mx-auto mb-4 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                        <span class="text-2xl font-bold text-accent group-hover:text-white">01</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">Профессионализм</h3>
+                    <p class="text-sm text-muted-foreground">Опытные фотографы с портфолио мирового уровня</p>
+                </div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 border-2 border-accent mx-auto mb-4 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                        <span class="text-2xl font-bold text-accent group-hover:text-white">02</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">Технологии</h3>
+                    <p class="text-sm text-muted-foreground">Современное оборудование премиум-класса</p>
+                </div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 border-2 border-accent mx-auto mb-4 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                        <span class="text-2xl font-bold text-accent group-hover:text-white">03</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">Индивидуальность</h3>
+                    <p class="text-sm text-muted-foreground">Персональный подход к каждому клиенту</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 lg:px-8">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-16 text-center" data-aos="fade-in">Наша история</h2>
+            <div class="max-w-4xl mx-auto relative">
+                <div class="timeline-line" data-aos="stretch-y" data-aos-duration="1500"></div>
+                
+                <div class="space-y-12">
+                    <div class="relative flex items-center md:justify-between" data-aos="fade-right">
+                        <div class="hidden md:block w-1/2 pr-8 text-right">
+                            <div class="text-2xl font-bold text-accent">2019</div>
+                            <p class="text-lg">Открытие студии</p>
+                        </div>
+                        <div class="absolute left-[13px] md:left-1/2 w-4 h-4 bg-accent rounded-full transform md:-translate-x-1/2 z-10"></div>
+                        <div class="md:w-1/2 pl-12 md:pl-8 text-left md:hidden">
+                            <div class="text-2xl font-bold text-accent">2019</div>
+                            <p class="text-lg">Открытие студии</p>
+                        </div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+
+                    <div class="relative flex items-center md:justify-between" data-aos="fade-left">
+                        <div class="hidden md:block md:w-1/2"></div>
+                        <div class="absolute left-[13px] md:left-1/2 w-4 h-4 bg-accent rounded-full transform md:-translate-x-1/2 z-10"></div>
+                        <div class="md:w-1/2 pl-12 md:pl-8 text-left">
+                            <div class="text-2xl font-bold text-accent">2021</div>
+                            <p class="text-lg">Расширение команды</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center md:justify-between" data-aos="fade-right">
+                        <div class="hidden md:block w-1/2 pr-8 text-right">
+                            <div class="text-2xl font-bold text-accent">2024</div>
+                            <p class="text-lg">1000+ довольных клиентов</p>
+                        </div>
+                        <div class="absolute left-[13px] md:left-1/2 w-4 h-4 bg-accent rounded-full transform md:-translate-x-1/2 z-10"></div>
+                        <div class="md:w-1/2 pl-12 md:pl-8 text-left md:hidden">
+                            <div class="text-2xl font-bold text-accent">2024</div>
+                            <p class="text-lg">1000+ довольных клиентов</p>
+                        </div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 lg:px-8 bg-secondary">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-16 text-center" data-aos="fade-up">Наши студии</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group bg-white p-4 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1627917932033-74123f070958?q=80&w=1080" alt="Студия №1" 
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Студия №1</h3>
+                    <div class="space-y-2 text-sm text-muted-foreground">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-1 h-4 bg-accent"></div>
+                            <span>Площадь: 80 м²</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-1 h-4 bg-accent"></div>
+                            <span>Высота потолков: 4 метра</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group bg-white p-4 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1634148739677-a5bb54df2611?q=80&w=1080" alt="Студия №3" 
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Студия №3</h3>
+                    <div class="space-y-2 text-sm text-muted-foreground">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-1 h-4 bg-accent"></div>
+                            <span>Площадь: 100 м²</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <div class="w-1 h-4 bg-accent flex-shrink-0 mt-1"></div>
+                            <span>Оборудование: Broncolor Siros, циклорама</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 lg:px-8">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-16 text-center" data-aos="fade-in">Как нас найти</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div data-aos="fade-right">
+                    <h3 class="text-xl font-semibold mb-6">Контактная информация</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 group">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-accent group-hover:scale-110 transition-transform"></i>
+                            <div>
+                                <div class="font-semibold mb-1">Адрес</div>
+                                <p class="text-muted-foreground">г. Барнаул, ул. Спортивная, д. 1В</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 group">
+                            <i data-lucide="phone" class="w-6 h-6 text-accent group-hover:scale-110 transition-transform"></i>
+                            <div>
+                                <div class="font-semibold mb-1">Телефон</div>
+                                <a href="tel:+79991234567" class="text-muted-foreground hover:text-accent transition-colors">+7 (999) 123-45-67</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 border-t pt-6">
+                        <h4 class="font-semibold mb-3">Часы работы</h4>
+                        <div class="flex justify-between text-sm text-muted-foreground mb-2">
+                            <span>Пн-Пт:</span>
+                            <span>09:00 - 21:00</span>
+                        </div>
+                        <div class="flex justify-between text-sm text-muted-foreground">
+                            <span>Сб-Вс:</span>
+                            <span>10:00 - 20:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-[400px] bg-gray-100 flex items-center justify-center grayscale group hover:grayscale-0 transition-all duration-700" data-aos="fade-left">
+                    <div id="map" class="w-full h-[450px] bg-gray-100 border border-gray-200 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        lucide.createIcons();
+        AOS.init({ once: true, duration: 800 });
+    </script>
+</body>
+</html>
