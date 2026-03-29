@@ -1,10 +1,14 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>МЕТРОНОМ — Профессиональная фотостудия</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -32,6 +36,46 @@
 </head>
 <body class="bg-white text-gray-900 font-sans overflow-x-hidden">
 
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.php" class="flex items-center space-x-2 group">
+                    <div class="w-8 h-8 bg-accent flex items-center justify-center transition-transform group-hover:rotate-90">
+                        <div class="w-1 h-6 bg-white"></div>
+                    </div>
+                    <span class="text-xl font-bold tracking-tighter uppercase">Метроном</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8" id="main-nav">
+                    <a href="pages/catalog.php" class="nav-link text-sm font-medium hover:text-accent transition-colors">Услуги</a>
+                    <a href="pages/about.php" class="nav-link text-sm font-medium hover:text-accent transition-colors">О нас</a>
+                    <a href="pages/reviews.php" class="nav-link text-sm font-medium hover:text-accent transition-colors">Отзывы</a>
+                    <a href="pages/booking.php" class="text-sm font-medium text-accent border border-accent px-4 py-2 hover:bg-accent hover:text-white transition-all">Забронировать</a>
+                </nav>
+                <div class="flex items-center space-x-5">
+                    <?php if ($isLoggedIn): ?>
+                        <a href="pages/profile.php" class="hover:text-accent transition-colors" title="Личный кабинет">
+                            <i data-lucide="user" class="w-6 h-6"></i>
+                        </a>
+                    <?php else: ?>
+                        <a href="pages/login.php" class="hidden sm:block text-sm font-semibold hover:text-accent transition-colors">Войти</a>
+                    <?php endif; ?>
+                    <button class="md:hidden" id="mobile-menu-btn">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 px-4 py-6 space-y-4 shadow-xl">
+            <a href="pages/catalog.php" class="block text-lg font-semibold">Услуги</a>
+            <a href="pages/about.php" class="block text-lg font-semibold">О нас</a>
+            <a href="pages/reviews.php" class="block text-lg font-semibold">Отзывы</a>
+            <a href="pages/booking.php" class="block bg-accent text-white text-center py-3 font-bold">Забронировать</a>
+        </div>
+    </header>
+    <div class="h-20"></div>
+    <!-- /HEADER -->
+
     <section class="relative h-screen flex items-center justify-center overflow-hidden bg-black">
         <div class="absolute inset-0 bg-cover bg-center grayscale opacity-60 scale-110 transition-transform duration-[1500ms]" 
              id="hero-bg"
@@ -51,7 +95,7 @@
                 Профессиональная фотостудия, где каждый кадр — в идеальном ритме
             </p>
             <div data-aos="fade-up" data-aos-delay="1000">
-                <a href="booking.html" class="inline-block bg-accent text-white px-12 py-4 text-lg hover:bg-opacity-90 transition-colors">
+                <a href="pages/booking.php" class="inline-block bg-accent text-white px-12 py-4 text-lg hover:bg-opacity-90 transition-colors">
                     Забронировать съемку
                 </a>
             </div>
@@ -87,7 +131,7 @@
                     </div>
                 </div>
                 <div class="mt-8" data-aos="fade-in" data-aos-delay="600">
-                    <a href="about.html" class="inline-block border border-black text-black px-8 py-3 hover:bg-black hover:text-white transition-colors">
+                    <a href="pages/about.php" class="inline-block border border-black text-black px-8 py-3 hover:bg-black hover:text-white transition-colors">
                         Узнать больше
                     </a>
                 </div>
@@ -104,7 +148,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="group" data-aos="fade-up" data-aos-delay="100">
-                    <a href="catalog.html" class="block">
+                    <a href="pages/catalog.php" class="block">
                         <div class="relative overflow-hidden aspect-[3/4] mb-4">
                             <img src="https://images.unsplash.com/photo-1706824258534-c3740a1ae96b?q=80&w=1080" alt="Портретная съемка" 
                                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
@@ -123,7 +167,7 @@
                     </a>
                 </div>
                 <div class="group" data-aos="fade-up" data-aos-delay="200">
-                    <a href="catalog.html" class="block">
+                    <a href="pages/catalog.php" class="block">
                         <div class="relative overflow-hidden aspect-[3/4] mb-4">
                             <img src="https://images.unsplash.com/photo-1758613654707-8bdab92f711d?q=80&w=1080" alt="Fashion съемка" 
                                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
@@ -142,7 +186,7 @@
                     </a>
                 </div>
                 <div class="group" data-aos="fade-up" data-aos-delay="300">
-                    <a href="catalog.html" class="block">
+                    <a href="pages/catalog.php" class="block">
                         <div class="relative overflow-hidden aspect-[3/4] mb-4">
                             <img src="https://images.unsplash.com/photo-1593968007877-b351c54bef61?q=80&w=1080" alt="Семейная фотосессия" 
                                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
@@ -163,7 +207,7 @@
             </div>
 
             <div class="mt-12 text-center" data-aos="fade-up">
-                <a href="catalog.html" class="inline-block bg-accent text-white px-10 py-3 hover:bg-opacity-90 transition-colors">
+                <a href="pages/catalog.php" class="inline-block bg-accent text-white px-10 py-3 hover:bg-opacity-90 transition-colors">
                     Смотреть все услуги
                 </a>
             </div>
@@ -225,7 +269,7 @@
                 Забронируйте фотосессию прямо сейчас и получите скидку 10% на первое посещение
             </p>
             <div data-aos="fade-up" data-aos-delay="400">
-                <a href="booking.html" class="inline-block bg-accent text-white px-12 py-4 text-lg hover:bg-opacity-90 transition-colors">
+                <a href="pages/booking.php" class="inline-block bg-accent text-white px-12 py-4 text-lg hover:bg-opacity-90 transition-colors">
                     Забронировать со скидкой
                 </a>
             </div>
@@ -237,7 +281,7 @@
     <script>
         // Инициализация иконок
         lucide.createIcons();
-        
+
         // Инициализация анимаций
         AOS.init({
             once: true, // Анимация проигрывается один раз
@@ -250,5 +294,24 @@
             document.getElementById('hero-bg').style.transform = 'scale(1)';
         };
     </script>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-50 border-t border-gray-200 pt-16 pb-8 mt-20">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-6 h-6 bg-accent flex items-center justify-center"><div class="w-0.5 h-4 bg-white"></div></div>
+                        <span class="text-lg font-bold uppercase">Метроном</span>
+                    </div>
+                    <p class="text-sm text-gray-500">Эстетика в каждом кадре.</p>
+                </div>
+                </div>
+            <div class="border-t border-gray-200 pt-8 text-center text-[10px] text-gray-400 uppercase tracking-widest">
+                © 2026 МЕТРОНОМ. Все права защищены.
+            </div>
+        </div>
+    </footer>
+    <!-- /FOOTER -->
 </body>
 </html>

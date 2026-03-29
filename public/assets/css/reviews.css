@@ -1,0 +1,42 @@
+/**
+ * Стили для отзывов
+ */
+
+/* Слайдер */
+.review-slide {
+    display: none;
+}
+
+.review-slide.active {
+    display: block;
+}
+
+/* Заполненные звёзды */
+.star-filled {
+    color: #EAB308;
+    fill: #EAB308;
+}
+
+/* Звёзды рейтинга */
+.rating-stars .star-icon {
+    transition: color 0.2s, fill 0.2s;
+}
+
+.rating-stars .star-icon.text-accent {
+    color: #EAB308;
+    fill: #EAB308;
+}
+
+.rating-stars .star-icon.text-gray-300 {
+    color: #D1D5DB;
+    fill: none;
+}
+
+/* Карточка отзыва */
+.review-card {
+    transition: border-color 0.3s ease;
+}
+
+.review-card:hover {
+    border-color: #EAB308;
+}

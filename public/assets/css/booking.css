@@ -1,0 +1,57 @@
+/**
+ * Стили для формы бронирования
+ */
+
+/* Шаги формы */
+.step-content {
+    display: none;
+}
+
+.step-content.active {
+    display: block;
+}
+
+/* Выбранные карточки */
+.card-selected {
+    border-color: #EAB308;
+    ring: 2px;
+    --tw-ring-color: #EAB308;
+}
+
+/* Прогресс-бар */
+#progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#progress-bar .flex-1 {
+    flex: 1;
+}
+
+#progress-bar .h-0\.5 {
+    height: 2px;
+    background-color: #E5E7EB;
+}
+
+/* Временные слоты */
+#time-slots button {
+    transition: all 0.2s ease;
+}
+
+#time-slots button:hover {
+    border-color: #EAB308;
+}
+
+#time-slots button.bg-accent {
+    background-color: #EAB308;
+    color: white;
+    border-color: #EAB308;
+}
+
+/* Кнопки навигации */
+#prev-btn:disabled,
+#next-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

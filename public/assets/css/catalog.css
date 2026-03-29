@@ -1,0 +1,42 @@
+/**
+ * Стили для каталога услуг
+ */
+
+/* Выбор фотографа */
+.photographer-card.selected-ring {
+    ring: 2px solid #EAB308;
+    box-shadow: 0 0 0 2px #EAB308;
+}
+
+/* Доп. услуги */
+.service-item.service-active {
+    border-color: #EAB308;
+    background-color: rgba(234, 179, 8, 0.05);
+}
+
+.check-box.check-box-active {
+    border-color: #EAB308;
+    background-color: #EAB308;
+}
+
+.check-box .rotate-45 {
+    transform: rotate(45deg);
+}
+
+/* Конструктор услуг */
+#constructor-section {
+    transition: opacity 0.5s ease;
+}
+
+#constructor-section.opacity-0 {
+    opacity: 0;
+}
+
+#constructor-section.opacity-100 {
+    opacity: 1;
+}
+
+/* Анимация цены */
+#total-price {
+    transition: transform 0.2s ease;
+}

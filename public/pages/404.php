@@ -7,7 +7,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
-    <script src="main.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
     <script>
         tailwind.config = {
             theme: {
@@ -42,7 +42,7 @@
                 К сожалению, запрашиваемая страница не существует, была перемещена или находится в разработке.
             </p>
 
-            <a href="index.html" class="inline-flex items-center space-x-3 bg-accent text-white px-10 py-4 font-bold hover:bg-opacity-90 transition-all group">
+            <a href="../index.php" class="inline-flex items-center space-x-3 bg-accent text-white px-10 py-4 font-bold hover:bg-opacity-90 transition-all group">
                 <i data-lucide="home" class="w-5 h-5 transition-transform group-hover:-translate-y-0.5"></i>
                 <span>Вернуться на главную</span>
             </a>

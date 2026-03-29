@@ -1,14 +1,20 @@
+<?php
+include '../config/config.php';
+$isLoggedIn = isset($_SESSION['user_id']);
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О фотостудии — МЕТРОНОМ</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/about.css">
+    <script src="../assets/js/main.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=1cc0794e-5d09-4ff5-9bff-d7a48461475b&lang=ru_RU" type="text/javascript"></script>
     <script>
         tailwind.config = {
@@ -26,7 +32,7 @@
     <style>
         .grayscale { filter: grayscale(100%); }
         .group:hover .grayscale-0 { filter: grayscale(0%); }
-        
+
         /* Линия таймлайна для мобильных и десктопа */
         .timeline-line {
             position: absolute;
@@ -45,6 +51,46 @@
     </style>
 </head>
 <body class="bg-white text-gray-900 font-sans overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="../index.php" class="flex items-center space-x-2 group">
+                    <div class="w-8 h-8 bg-accent flex items-center justify-center transition-transform group-hover:rotate-90">
+                        <div class="w-1 h-6 bg-white"></div>
+                    </div>
+                    <span class="text-xl font-bold tracking-tighter uppercase">Метроном</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8" id="main-nav">
+                    <a href="catalog.php" class="nav-link text-sm font-medium hover:text-accent transition-colors">Услуги</a>
+                    <a href="about.php" class="nav-link text-sm font-medium hover:text-accent transition-colors">О нас</a>
+                    <a href="reviews.php" class="nav-link text-sm font-medium hover:text-accent transition-colors">Отзывы</a>
+                    <a href="booking.php" class="text-sm font-medium text-accent border border-accent px-4 py-2 hover:bg-accent hover:text-white transition-all">Забронировать</a>
+                </nav>
+                <div class="flex items-center space-x-5">
+                    <?php if ($isLoggedIn): ?>
+                        <a href="profile.php" class="hover:text-accent transition-colors" title="Личный кабинет">
+                            <i data-lucide="user" class="w-6 h-6"></i>
+                        </a>
+                    <?php else: ?>
+                        <a href="login.php" class="hidden sm:block text-sm font-semibold hover:text-accent transition-colors">Войти</a>
+                    <?php endif; ?>
+                    <button class="md:hidden" id="mobile-menu-btn">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 absolute w-full left-0 px-4 py-6 space-y-4 shadow-xl">
+            <a href="catalog.php" class="block text-lg font-semibold">Услуги</a>
+            <a href="about.php" class="block text-lg font-semibold">О нас</a>
+            <a href="reviews.php" class="block text-lg font-semibold">Отзывы</a>
+            <a href="booking.php" class="block bg-accent text-white text-center py-3 font-bold">Забронировать</a>
+        </div>
+    </header>
+    <div class="h-20"></div>
+    <!-- /HEADER -->
 
     <section class="py-24 px-4 lg:px-8">
         <div class="container mx-auto">
@@ -226,9 +272,30 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=1cc0794e-5d09-4ff5-9bff-d7a48461475b&lang=ru_RU" type="text/javascript"></script>
+    <script src="../assets/js/map.js" defer></script>
     <script>
         lucide.createIcons();
         AOS.init({ once: true, duration: 800 });
     </script>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-50 border-t border-gray-200 pt-16 pb-8 mt-20">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-6 h-6 bg-accent flex items-center justify-center"><div class="w-0.5 h-4 bg-white"></div></div>
+                        <span class="text-lg font-bold uppercase">Метроном</span>
+                    </div>
+                    <p class="text-sm text-gray-500">Эстетика в каждом кадре.</p>
+                </div>
+                </div>
+            <div class="border-t border-gray-200 pt-8 text-center text-[10px] text-gray-400 uppercase tracking-widest">
+                © 2026 МЕТРОНОМ. Все права защищены.
+            </div>
+        </div>
+    </footer>
+    <!-- /FOOTER -->
 </body>
 </html>
